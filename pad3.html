@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MEST Aquaculture – OnePlus Pad 3 preview</title>
+<style>
+/* =========================================================
+   OnePlus Pad 3 device frame
+   Screen: 13.2", 3392 x 2400 px, 7:5, 315 ppi.
+   Chrome on the Pad 3 reports a CSS viewport of 960 x 1357
+   in portrait (DPR 2.5), so the iframe is locked to exactly
+   that. index.html is untouched; it scales its 1200px design
+   to the iframe width on its own.
+   Body: 289.61 x 209.66 mm -> bezels ~8.4 mm (long edges) and
+   ~7.3 mm (short edges), scaled to screen px below.
+   ========================================================= */
+:root {
+  --screen-w: 960px;
+  --screen-h: 1357px;
+  --bezel-x: 36px;   /* left / right in portrait */
+  --bezel-y: 42px;   /* top / bottom in portrait */
+  --body-w: calc(var(--screen-w) + var(--bezel-x) * 2);
+  --body-h: calc(var(--screen-h) + var(--bezel-y) * 2);
+  --radius: 44px;
+  --bg: #d9dde3;
+  --metal: #2b3038;
+  --metal-edge: #4a515b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scaled as a unit so the iframe keeps a true 960px CSS viewport */
+.device {
+  width: var(--body-w);
+  height: var(--body-h);
+  flex: 0 0 auto;
+  transform-origin: center center;
+  position: relative;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, #353b44 0%, var(--metal) 55%, #22262c 100%);
+  box-shadow:
+    0 0 0 1.5px var(--metal-edge),
+    0 2px 0 rgba(255,255,255,0.08) inset,
+    0 30px 60px -20px rgba(0,0,0,0.55),
+    0 12px 24px -12px rgba(0,0,0,0.4);
+}
+
+.screen {
+  position: absolute;
+  top: var(--bezel-y);
+  left: var(--bezel-x);
+  width: var(--screen-w);
+  height: var(--screen-h);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0E2C56;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.6) inset;
+}
+
+.screen iframe {
+  display: block;
+  width: var(--screen-w);
+  height: var(--screen-h);
+  border: 0;
+  background: #0E2C56;
+}
+
+/* Front camera: centred on the long edge (left side in portrait) */
+.camera {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #4a5566 0%, #0a0d12 60%);
+  box-shadow: 0 0 0 1.5px #16191e, 0 0 0 3px #3a414b;
+}
+
+/* Side buttons (power on top-left short edge, volume on left long edge) */
+.btn {
+  position: absolute;
+  background: linear-gradient(180deg, #4a515b, #2b3038);
+  border-radius: 3px;
+}
+.btn.power  { top: -4px; left: 80px; width: 64px; height: 4px; }
+.btn.vol    { left: -4px; top: 110px; width: 4px; height: 120px; }
+
+.caption {
+  position: fixed;
+  left: 16px;
+  bottom: 12px;
+  font-size: 12px;
+  color: #5c636e;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="device" id="device">
+    <div class="btn power"></div>
+    <div class="btn vol"></div>
+    <div class="camera"></div>
+    <div class="screen">
+      <iframe src="index.html" title="MEST Aquaculture"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="caption">OnePlus Pad 3 · 13.2" · 3392 × 2400 (7:5) · viewport 960 × 1357 CSS px</div>
+
+<script>
+(function () {
+  'use strict';
+  var device = document.getElementById('device');
+  var PAD = 40; // breathing room around the device
+
+  function fit() {
+    var bw = device.offsetWidth;
+    var bh = device.offsetHeight;
+    var vw = window.innerWidth - PAD * 2;
+    var vh = window.innerHeight - PAD * 2;
+    var s = Math.min(vw / bw, vh / bh, 1);
+    device.style.transform = 'scale(' + s + ')';
+  }
+
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
+
+</body>
+</html>
