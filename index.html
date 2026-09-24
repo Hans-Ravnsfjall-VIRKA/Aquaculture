@@ -149,7 +149,7 @@ section {
    ========================================================= */
 /* Eyebrows — Regular 400, NOT bold, mixed case */
 .eyebrow {
-  font-size: 24px;
+  font-size: 27px;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
@@ -185,12 +185,12 @@ section {
 }
 
 .body-lg {
-  font-size: 26px;
+  font-size: 29px;
   line-height: 1.55;
   font-weight: 400;
 }
 
-.body { font-size: 22px; line-height: 1.55; font-weight: 400; }
+.body { font-size: 25px; line-height: 1.55; font-weight: 400; }
 
 /* =========================================================
    GREY → WHITE TEXT REVEAL
@@ -418,7 +418,7 @@ section {
 }
 
 .service-card-text {
-  font-size: 22px;
+  font-size: 25px;
   line-height: 1.5;
   font-weight: 400;
   color: rgba(255,255,255,0.95);
@@ -511,7 +511,7 @@ section {
 }
 
 .location-eyebrow {
-  font-size: 24px;
+  font-size: 27px;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
@@ -591,7 +591,7 @@ section {
   color: var(--navy);
 }
 .location-bottom p {
-  font-size: 24px;
+  font-size: 27px;
   line-height: 1.55;
   font-weight: 400;
   color: var(--navy);
@@ -638,7 +638,7 @@ section {
 }
 
 .case-eyebrow {
-  font-size: 26px;
+  font-size: 29px;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;
@@ -660,7 +660,7 @@ section {
   margin-top: auto;  /* Always pushes the body to the bottom of the section */
 }
 .case-bottom p {
-  font-size: 22px;
+  font-size: 25px;
   line-height: 1.55;
   margin-bottom: 18px;
 }
@@ -918,11 +918,10 @@ section {
   overflow: hidden;
   opacity: 0;
   transition: max-height .6s ease, opacity .5s ease;
-  width: calc(100% - 120px);
-  max-width: 900px;
+  width: calc(100% - 160px);   /* same 1040px column as the case galleries */
 }
 .staff-gallery-wrap.is-open {
-  max-height: 900px;
+  max-height: 1000px;
   opacity: 1;
 }
 
@@ -936,11 +935,15 @@ section {
   text-align: left;
 }
 
-/* White border around the dry-dock thumbs */
-.case-gallery[data-gallery="drydock"] .case-gallery-item {
-  border: 10px solid var(--white);
-  box-sizing: border-box;
+/* Workshop photo is daylight-bright: soft shadow keeps the gallery title readable */
+#workshop .staff-gallery-title { text-shadow: 0 2px 24px rgba(8,29,58,0.55); }
+/* Dark gradient from the bottom so the "Inside the workshop" button reads on the bright floor */
+#workshop .staff-photo-wrap::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 45%;
+  z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
 }
+
 
 /* =========================================================
    SECTION 6: TRUSTED BY CLIENTS
@@ -1022,7 +1025,7 @@ section {
   letter-spacing: -0.02em;
 }
 .fact-label {
-  font-size: 26px;
+  font-size: 29px;
   font-weight: 400;
   color: var(--navy);
   letter-spacing: 0;
@@ -1043,6 +1046,13 @@ section {
   /* image set via data-bg (lazy-loaded) */
   background-size: cover;
   background-position: center top;
+}
+/* The original quote photo had its dark fade baked in; drawn in CSS here */
+.quote-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,29,58,0) 30%, rgba(8,29,58,0.55) 62%, rgba(8,29,58,0.88) 100%);
 }
 
 .quote-inner {
@@ -1127,7 +1137,7 @@ section {
   max-width: 760px;
 }
 .hseq-intro {
-  font-size: 24px;
+  font-size: 27px;
   font-weight: 400;
   line-height: 1.5;
   margin-bottom: 48px;
@@ -1143,7 +1153,7 @@ section {
   position: relative;
   padding-left: 36px;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 400;
   line-height: 1.45;
   color: var(--white);
@@ -1181,7 +1191,7 @@ section {
   margin-bottom: 0;
 }
 .sustainability-text p {
-  font-size: 24px;
+  font-size: 27px;
   line-height: 1.55;
   font-weight: 400;
   color: var(--navy);
@@ -1293,6 +1303,7 @@ a.contact-line:active { opacity: 0.7; }
   background: var(--navy);
   color: var(--white);
   padding: 60px 80px;
+  border-top: 1px solid rgba(255,255,255,0.18); /* separates the footer from the navy support section above */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1375,7 +1386,7 @@ a.contact-line:active { opacity: 0.7; }
   color: var(--navy);
 }
 .location-list b    { font-size: 40px; font-weight: 700; line-height: 1.2; }
-.location-list span { font-size: 22px; font-weight: 400; color: var(--grey-text); text-align: right; }
+.location-list span { font-size: 25px; font-weight: 400; color: var(--grey-text); text-align: right; }
 
 /* Service cards: intro paragraph above the bullet list */
 .service-card-text p { margin: 0; }
@@ -1385,7 +1396,7 @@ a.contact-line:active { opacity: 0.7; }
   position: relative; z-index: 1;
   max-width: 880px;
   margin: -20px 0 64px;
-  font-size: 24px; line-height: 1.55; font-weight: 400;
+  font-size: 27px; line-height: 1.55; font-weight: 400;
   color: var(--navy); opacity: 0.9;
 }
 
@@ -1404,19 +1415,6 @@ a.contact-line:active { opacity: 0.7; }
     rgba(8,29,58,0.50) 38%,
     rgba(8,29,58,0.78) 68%,
     rgba(8,29,58,0.94) 100%);
-}
-
-/* Trusted: customer quote under the intro */
-.trusted-pull {
-  max-width: 820px;
-  margin: 90px auto 0;
-  font-size: 40px; font-weight: 700; line-height: 1.3;
-  color: var(--navy);
-}
-.trusted-attr {
-  margin-top: 28px;
-  font-size: 22px; font-weight: 400;
-  color: var(--orange);
 }
 
 /* Innovation (uses .sustainability). The original photo had its white
@@ -1477,20 +1475,6 @@ a.contact-line:active { opacity: 0.7; }
 }
 .support-phone:active { opacity: 0.7; }
 
-/* Contact: eyebrow + meeting button in the site's outline-pill style */
-.contact .eyebrow { position: relative; z-index: 2; }
-.contact .h-section { font-size: 96px; }
-.contact-cta {
-  display: inline-block;
-  margin-top: 36px;
-  padding: 22px 44px;
-  border: 2px solid var(--navy);
-  border-radius: 999px;
-  font-size: 22px; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--navy);
-  text-decoration: none;
-}
-.contact-cta:active { background: rgba(14,44,86,0.08); }
 
 </style>
 </head>
@@ -1700,10 +1684,11 @@ a.contact-line:active { opacity: 0.7; }
       <div class="case-extra">
         <p>Scope covered drawing and calculation, stainless steel fabrication, conveyor equipment, guarding and electrical installation. Grading tolerance was verified on site against the customer's own control weights before handover, and the line has run two seasons on scheduled service only.</p>
         <div class="case-gallery" data-gallery="case1">
-          <div class="case-gallery-item" data-index="0"><img src="aq-case1-1.jpg" alt="Fish handling system in operation at sea" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="1"><img src="aq-case1-2.jpg" alt="Fish handling system on deck, seen from above" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="2"><img src="aq-case1-3.jpg" alt="Stainless steel processing equipment installed on site" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="3"><img src="aq-case1-4.jpg" alt="Transport of finished equipment by road" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="0"><img src="aq-case1-1.jpg" alt="Smolt separator 1-to-2, stainless steel" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="1"><img src="aq-case1-2.jpg" alt="Smolt separator 2-to-4, 3D model" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="2"><img src="aq-case1-3.jpg" alt="Smolt separator 2-to-4, inside view" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="3"><img src="aq-case1-4.jpg" alt="Sorting line at sea with MEST crane" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="4"><img src="aq-case1-5.jpg" alt="MEST Twister sorting system" loading="lazy" decoding="async" /></div>
         </div>
       </div>
       <button class="case-show-more" data-target="case-1">Show more</button>
@@ -1724,7 +1709,7 @@ a.contact-line:active { opacity: 0.7; }
     <li class="fade-up">PE plastic welding department</li>
     <li class="fade-up">Laser cutting machine</li>
     <li class="fade-up">Conveyor system equipment</li>
-    <li class="fade-up">Hydraulic hose production</li>
+    <li class="fade-up">Fish transport system</li>
   </ul>
   <div class="staff-photo-wrap fade-up">
     <div class="staff-photo" data-bg="aq-workshop.jpg"></div>
@@ -1732,9 +1717,13 @@ a.contact-line:active { opacity: 0.7; }
       <button class="staff-cta" id="staffCta" data-label="Inside the workshop">Inside the workshop</button>
       <div class="staff-gallery-wrap" id="staffGalleryWrap">
         <h3 class="staff-gallery-title">Inside the workshop</h3>
-        <div class="case-gallery case-gallery-2col" data-gallery="drydock">
-          <div class="case-gallery-item" data-index="0"><img src="aq-workshop-1.jpg" alt="PE plastic welding" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="1"><img src="aq-workshop-2.jpg" alt="Stock of components and spare parts" loading="lazy" decoding="async" /></div>
+        <div class="case-gallery" data-gallery="workshop">
+          <div class="case-gallery-item" data-index="0"><img src="aq-workshop-1.jpg" alt="Stock of stainless steel threaded rod" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="1"><img src="aq-workshop-2.jpg" alt="Laser cutting the MEST logo in steel plate" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="2"><img src="aq-workshop-3.jpg" alt="MEST in Runavík, seen from the harbour" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="3"><img src="aq-workshop-4.jpg" alt="Overview of the Runavík workshop floor" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="4"><img src="aq-workshop-5.jpg" alt="MEST 24-hour service vans" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="5"><img src="aq-workshop-6.jpg" alt="The MEST sales store and parts counter" loading="lazy" decoding="async" /></div>
         </div>
       </div>
     </div>
@@ -1773,12 +1762,10 @@ a.contact-line:active { opacity: 0.7; }
       <div class="case-extra">
         <p>MEST handled hull outfitting, deck equipment, hydraulic systems, electrical installation and sea trials, with the yard in Skála and service capacity in Runavík covering the first year of operation. Annual maintenance now runs on a fixed window agreed with the customer ahead of each season.</p>
         <div class="case-gallery" data-gallery="case2">
-          <div class="case-gallery-item" data-index="0"><img src="aq-case2-1.jpg" alt="Wheelhouse section under construction" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="1"><img src="aq-case2-2.jpg" alt="Catamaran rolled out of the building hall" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="2"><img src="aq-case2-3.jpg" alt="Transport to launch" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="3"><img src="aq-case2-4.jpg" alt="Launch day" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="4"><img src="aq-case2-5.jpg" alt="Outfitting at the quay" loading="lazy" decoding="async" /></div>
-          <div class="case-gallery-item" data-index="5"><img src="aq-case2-6.jpg" alt="In service" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="0"><img src="aq-case2-1.jpg" alt="Heinanøva, Sandavágur — MELCAL crane at work" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="1"><img src="aq-case2-2.jpg" alt="MEST 1508W — 3D design of a workboat for Bakkafrost" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="2"><img src="aq-case2-3.jpg" alt="Grønarók, Tórshavn — zero-emission workboat on delivery day" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="3"><img src="aq-case2-4.jpg" alt="Heinanøva at sea" loading="lazy" decoding="async" /></div>
         </div>
       </div>
       <button class="case-show-more" data-target="case-2">Show more</button>
@@ -1792,8 +1779,33 @@ a.contact-line:active { opacity: 0.7; }
 <section class="trusted" id="trusted">
   <h2 class="h-section">Trusted by the aquaculture industry</h2>
   <p class="trusted-quote reveal-words-dark" data-reveal="words-dark">A strong solution is not only steel, drawings and equipment. It is understanding the operation it goes into, and delivering work that performs in real conditions.</p>
-  <p class="trusted-pull fade-up">“[Customer quote: reliability, delivery time, or a problem solved in practice.]”</p>
-  <div class="trusted-attr fade-up">Name, Title, Company</div>
+</section>
+
+<!-- =========================================================
+     SECTION 8b: CASE 3 — Expertise worldwide
+     ========================================================= -->
+<section class="case" id="case-3">
+  <div class="case-bg" data-bg="aq-case-3.jpg" data-parallax="0.25"></div>
+  <div class="case-inner">
+    <div>
+      <h2 class="case-title reveal-words" data-reveal="words">Expertise – wherever you need it</h2>
+    </div>
+    <div class="case-bottom">
+      <p class="fade-up">MEST provides on-site installation, repair and technical services worldwide.</p>
+      <p class="fade-up">Using 3D scanning and precise measurements, components can be designed and prefabricated at our facilities in the Faroe Islands. Our team then travels to the site to complete the installation – ensuring an accurate fit while reducing downtime and disruption to your operation.</p>
+      <p class="fade-up">The specialists we send are highly skilled, experienced and professional. They arrive prepared, work efficiently and take responsibility for delivering the right solution – wherever the job takes them.</p>
+      <div class="case-extra">
+        <div class="case-gallery" data-gallery="case3">
+          <div class="case-gallery-item" data-index="0"><img src="aq-case3-1.jpg" alt="Engineers at the drawing office" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="1"><img src="aq-case3-2.jpg" alt="3D model of a fish transport tank" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="2"><img src="aq-case3-3.jpg" alt="3D model presented on screen" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="3"><img src="aq-case3-4.jpg" alt="Technician inspecting a component" loading="lazy" decoding="async" /></div>
+          <div class="case-gallery-item" data-index="4"><img src="aq-case3-5.jpg" alt="3D model of a containerised processing plant" loading="lazy" decoding="async" /></div>
+        </div>
+      </div>
+      <button class="case-show-more" data-target="case-3">Show more</button>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
@@ -1803,7 +1815,7 @@ a.contact-line:active { opacity: 0.7; }
   <div class="quote-bg" data-bg="aq-quote-bg.jpg"></div>
   <div class="quote-inner">
     <p class="quote-text reveal-words" data-reveal="words">Our customers do not buy steel. They buy the certainty that the line runs on Monday morning.</p>
-    <div class="quote-attr fade-up">Name, Title</div>
+    <div class="quote-attr fade-up">Mouritz Mohr, CEO</div>
   </div>
 </section>
 
@@ -1853,25 +1865,6 @@ a.contact-line:active { opacity: 0.7; }
   </div>
 </section>
 
-<!-- =========================================================
-     SECTION 12: CONTACT
-     ========================================================= -->
-<section class="contact" id="contact">
-  <div class="eyebrow fade-up">Get in touch</div>
-  <h2 class="h-section reveal-words-dark" data-reveal="words-dark">Part of the build behind world-class salmon farming</h2>
-  <div class="contact-photo" data-bg="aq-contact.png"></div>
-  <div class="contact-grid">
-    <div class="contact-photo-spacer"></div>
-    <div class="contact-text">
-      <p class="fade-up">From vessel to processing line. From drawing to installation. From urgent service to long-term development.</p>
-      <div class="contact-name fade-up">[Name]</div>
-      <div class="contact-title-line fade-up">Sales, Aquaculture</div>
-      <a class="contact-line fade-up" href="tel:+298791100">Tel. +298 79 11 00</a>
-      <a class="contact-line fade-up" href="mailto:sales@mest.fo">sales@mest.fo</a>
-      <a class="contact-cta fade-up" href="mailto:sales@mest.fo">Book a meeting</a>
-    </div>
-  </div>
-</section>
 
 <footer class="footer">
   <img class="footer-logo" src="logo.png" alt="MEST" />
